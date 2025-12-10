@@ -54,3 +54,19 @@
 
   --border: hsl(240 5% 18%);           
 }
+
+
+
+.text-gradient {
+  background: linear-gradient(
+    to right, 
+    var(--gradient-start), 
+    var(--gradient-mid), 
+    var(--gradient-end)
+  );
+  
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  color: transparent;
+}
