@@ -15,7 +15,7 @@
   --color-accent-foreground: var(--accent-foreground);
   
   --color-border: var(--border);
-  
+  --color-muted: var(--muted);
   --font-sans: Inter, Arial, Helvetica, sans-serif;
   
   --radius-lg: var(--radius);
@@ -37,22 +37,23 @@
   --card-foreground: #171717;
   --primary: hsl(190 100% 35%);
   --border: #e5e5e5;
+  --muted: #737373
 }
 
 :root.dark {
   --background: hsl(240 10% 3.9%);    
   --foreground: hsl(0 0% 98%);        
-
   --card: hsl(240 10% 5%);            
   --card-foreground: hsl(0 0% 98%);
 
   --primary: hsl(190 100% 50%);        
-  --primary-foreground: hsl(240 10% 3.9%);
+  --primary-foreground: hsl(240, 75%, 2%);
 
   --accent: hsl(270 100% 60%);        
   --accent-foreground: hsl(0 0% 98%);
 
-  --border: hsl(240 5% 18%);           
+  --border: hsl(240 5% 18%); 
+  --muted: #a3a3a3;          
 }
 
 
