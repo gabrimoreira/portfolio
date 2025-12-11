@@ -11,7 +11,7 @@ export default function Projects() {
         </h2>
         <div className="hidden md:block h-1 flex-1 bg-border/50 mt-2" />
         <p className=" text-muted text-sm md:text-base max-w-md text-justify md:text-center">
-          Uma seleção dos trabalhos que desenvolvi na graduação
+          Uma seleção dos trabalhos que desenvolvi na graduação e projetos pessoais
         </p>
       </div>
 

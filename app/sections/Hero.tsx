@@ -67,9 +67,9 @@ export default function Hero() {
           </Button>
         </a>
 
-        <a href="#experience">
+        <a href="#papers">
           <Button variant="outline">
-            Ver Experiência
+            Ver Trabalhos
             <Briefcase className="w-4 h-4" />
           </Button>
         </a>
