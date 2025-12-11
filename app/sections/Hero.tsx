@@ -61,7 +61,7 @@ export default function Hero() {
         `}
       >
         <a href="#projects">
-          <Button variant="primary">
+          <Button variant="primary" >
             Ver Projetos
             <ArrowDown className="w-4 h-4" />
           </Button>
