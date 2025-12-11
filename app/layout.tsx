@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
-
+import { AOSInit } from "./components/AOSInit"; 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,6 +19,7 @@ export default function RootLayout({
     <html lang="pt-br" suppressHydrationWarning> 
 
       <body className={inter.className}>
+        <AOSInit />
         <ThemeProvider
           attribute="class"  
           defaultTheme="dark"  
