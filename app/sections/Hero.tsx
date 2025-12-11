@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "../components/Button"; 
-import { ArrowDown, Briefcase } from "lucide-react";
+import { ArrowDown, Briefcase, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Hero() {
   const [displayedName, setDisplayedName] = useState("");
@@ -74,6 +74,40 @@ export default function Hero() {
           </Button>
         </a>
       </div>
+
+      <div 
+        className={`
+          flex gap-6 mt-4
+          transition-all duration-1000 ease-out delay-500 
+          ${showBio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+        `}
+      >
+        <a 
+          href="https://github.com/gabrimoreira" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
+        >
+          <Github className="w-6 h-6" />
+        </a>
+
+        <a 
+          href="https://linkedin.com/in/gabrimoreira" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
+        >
+          <Linkedin className="w-6 h-6" />
+        </a>
+
+        <a 
+          href="mailto:gabrieldevandrade49@gmail.com"
+          className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
+        >
+          <Mail className="w-6 h-6" />
+        </a>
+      </div>
+    
     </main>
   );
 }
