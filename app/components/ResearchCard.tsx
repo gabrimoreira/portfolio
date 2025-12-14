@@ -34,7 +34,7 @@ export function ResearchCard({ title, type, publisher, date, description, tags, 
           
           <div className="flex flex-col">
             <span className={`text-xs font-semibold uppercase tracking-wider ${isPublished ? "text-yellow-500" : "text-primary"}`}>
-              {isPublished ? "Publicação Oficial" : "Acadêmico"}
+              {isPublished ? "Accepted Paper" : "Academic"}
             </span>
             <span className="text-xs text-muted">{date}</span>
           </div>
