@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "../components/Button"; 
+import { Button } from "../components/Button";
 import { ArrowDown, Briefcase, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Hero() {
@@ -10,7 +10,15 @@ export default function Hero() {
 
   useEffect(() => {
     const seq = [
-      "G", "Ga", "Gab", "Gabr", "Gabri", "Gabrie", "Gabriel", "Gabriel ", "Gabriel ."
+      "G",
+      "Ga",
+      "Gab",
+      "Gabr",
+      "Gabri",
+      "Gabrie",
+      "Gabriel",
+      "Gabriel ",
+      "Gabriel .",
     ];
 
     let i = 0;
@@ -34,9 +42,8 @@ export default function Hero() {
 
   return (
     <main className="flex flex-col min-h-screen items-center justify-center bg-background min-w-screen px-4 gap-8 text-center">
-      
       <h1 className="text-5xl md:text-8xl font-bold text-foreground tracking-tight">
-        Oi, meu nome é
+        Hi, my name is
         <span className="text-gradient">{" " + displayedName}</span>
         <span className="animate-pulse text-primary ml-1">|</span>
       </h1>
@@ -48,12 +55,12 @@ export default function Hero() {
           ${showBio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
       `}
       >
-        Sou brasileiro e graduando em Engenharia de Computação na UFC.
-        Participei da empresa júnior GTI com foco em desenvolvimento web e atuei
-        em pesquisas sobre simulação e análise de dados de circuitos quânticos.
+        I am a Computer Engineering undergraduate at the Federal University of
+        Ceará (UFC). My background includes web development at GTI Junior
+        Enterprise and research on quantum circuit simulation and data analysis.
       </p>
 
-      <div 
+      <div
         className={`
           flex flex-col sm:flex-row gap-4 pt-4
           transition-all duration-1000 ease-out delay-300 
@@ -61,53 +68,52 @@ export default function Hero() {
         `}
       >
         <a href="#projects">
-          <Button variant="primary" >
-            Ver Projetos
+          <Button variant="primary">
+            View Projects
             <ArrowDown className="w-4 h-4" />
           </Button>
         </a>
 
-        <a href="#papers">
+        <a href="#research">
           <Button variant="outline">
-            Ver Trabalhos
+            Read Research
             <Briefcase className="w-4 h-4" />
           </Button>
         </a>
       </div>
 
-      <div 
+      <div
         className={`
           flex gap-6 mt-4
           transition-all duration-1000 ease-out delay-500 
           ${showBio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
         `}
       >
-        <a 
-          href="https://github.com/gabrimoreira" 
-          target="_blank" 
+        <a
+          href="https://github.com/gabrimoreira"
+          target="_blank"
           rel="noopener noreferrer"
           className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
         >
           <Github className="w-6 h-6" />
         </a>
 
-        <a 
-          href="https://linkedin.com/in/gabrimoreira" 
-          target="_blank" 
+        <a
+          href="https://linkedin.com/in/gabrimoreira"
+          target="_blank"
           rel="noopener noreferrer"
           className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
         >
           <Linkedin className="w-6 h-6" />
         </a>
 
-        <a 
+        <a
           href="mailto:gabrieldevandrade49@gmail.com"
           className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
         >
           <Mail className="w-6 h-6" />
         </a>
       </div>
-    
     </main>
   );
 }

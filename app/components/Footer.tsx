@@ -12,7 +12,7 @@ export  function Footer() {
         </div>
 
         <div className="text-xs text-muted text-center">
-          &copy; {currentYear} Gabriel. Construído com <span className="text-foreground">Next.js</span> & <span className="text-foreground">Tailwind</span>.
+          &copy; {currentYear} Gabriel. Built with  <span className="text-foreground">Next.js</span> & <span className="text-foreground">Tailwind</span>.
         </div>
 
         <div className="flex items-center gap-4">
