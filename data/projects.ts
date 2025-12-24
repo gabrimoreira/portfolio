@@ -29,6 +29,6 @@ export const projects = [
     repoLink: "https://github.com/gabrimoreira/document-ocr-ai",
     demoLink: "https://document-ocr-ai.vercel.app/",
     
-    image: "",
+    image: "/projects/ocr.png",
   },
 ];
