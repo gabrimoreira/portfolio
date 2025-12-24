@@ -26,8 +26,8 @@ export const projects = [
     description: "A full-stack application for automated document text extraction. Built with Next.js frontend, NestJS backend, and AI integration.",
     tags: ["Next.js", "NestJS", "TypeScript", "AI Integration"],
     
-    repoLink: "https://github.com/gabrimoreira",
-    demoLink: "",
+    repoLink: "https://github.com/gabrimoreira/document-ocr-ai",
+    demoLink: "https://document-ocr-ai.vercel.app/",
     
     image: "",
   },
