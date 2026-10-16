@@ -1,30 +1,68 @@
+import type { Localized } from "./locale";
 
-export const research = [
+export interface Paper {
+  id: string;
+  title: string;
+  translatedTitle: string;
+  authors: string[];
+  self: string;
+  year: string;
+  venue: Localized;
+  summary: Localized;
+  link: string;
+}
+
+export interface Coursework {
+  id: string;
+  title: Localized;
+  year: string;
+  description: Localized;
+  link: string;
+}
+
+export const paper: Paper = {
+  id: "qfa",
+  title: "Proposta de um Somador Completo Quântico Fotônico",
+  translatedTitle: "Proposal of a photonic quantum full adder",
+  authors: ["Orleans C. V. Cardoso", "Gabriel M. de Andrade", "João Batista R. Silva"],
+  self: "Gabriel M. de Andrade",
+  year: "2025",
+  venue: {
+    pt: "VIII Workshop-Escola de Computação e Informação Quântica (WECIQ), UFSC, Florianópolis",
+    en: "8th Workshop-School on Quantum Computation and Information (WECIQ), UFSC, Florianópolis, Brazil",
+  },
+  summary: {
+    pt: "Somador completo quântico em arquitetura fotônica, com estados coerentes e óptica linear, estendendo a plataforma QPU X para aritmética reversível.",
+    en: "A quantum full adder in a photonic architecture built on coherent states and linear optics, extending the QPU X platform to reversible arithmetic.",
+  },
+  link: "/docs/artigo-qfa.pdf",
+};
+
+export const coursework: Coursework[] = [
   {
-    title: "Proposal of a Quantum Full Adder",
-    type: "published",
-    publisher: "WECIQ 2025",
-    date: "2025",
-    description: "Co-author. A study proposing a novel architecture for a Quantum Full Adder, exploring circuit optimization and gate implementation strategies for efficient quantum arithmetic.",
-    tags: ["Python","Quantum Computing", "Circuit Design", "Physics"],
-    link: "/docs/artigo-qfa.pdf" 
+    id: "ica",
+    title: {
+      pt: "Estudos em Inteligência Computacional Aplicada",
+      en: "Applied Computational Intelligence studies",
+    },
+    year: "2024",
+    description: {
+      pt: "Relatórios técnicos aplicando aprendizado de máquina: análise exploratória da qualidade de vinhos, modelos de regressão para prever solubilidade e algoritmos de classificação para pedidos de bolsa.",
+      en: "Technical reports applying machine learning: exploratory analysis of wine quality, regression models for solubility prediction and classification algorithms for grant applications.",
+    },
+    link: "https://github.com/gabrimoreira/university-docs/tree/main/ica",
   },
   {
-    title: "Applied Computational Intelligence Studies",
-    type: "academic",
-    publisher: "Coursework - UFC",
-    date: "2024",
-    description: "A repository of technical reports applying Machine Learning techniques. Includes Exploratory Data Analysis (EDA) on wine quality, Regression Models for solubility prediction, and Classification Algorithms for grant applications.",
-    tags: ["Machine Learning", "Python", "Data Science", "Scikit-Learn"],
-    link: "https://github.com/gabrimoreira/university-docs/tree/main/ica"
-  },
-  {
-    title: "Software Verification & Validation Portfolio",
-    type: "academic",
-    publisher: "Coursework - UFC",
-    date: "2024",
-    description: "Comprehensive documentation of the software testing lifecycle for a Full-Stack application. Covers Test Planning, Test Case Specifications, Failure Reporting, and Automated Testing strategies.",
-    tags: ["Software Testing", "QA", "Cypress", "Jest"],
-    link: "https://github.com/gabrimoreira/university-docs/tree/main/v%26v"
+    id: "vv",
+    title: {
+      pt: "Verificação e Validação de Software",
+      en: "Software Verification & Validation",
+    },
+    year: "2024",
+    description: {
+      pt: "Documentação do ciclo de testes de uma aplicação full-stack: plano de testes, especificação de casos de teste, relatórios de falhas e testes automatizados.",
+      en: "Documentation of the testing lifecycle for a full-stack application: test planning, test case specifications, failure reports and automated testing.",
+    },
+    link: "https://github.com/gabrimoreira/university-docs/tree/main/v%26v",
   },
 ];

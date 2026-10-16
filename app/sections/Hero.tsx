@@ -1,119 +1,85 @@
-"use client";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { Terminal } from "../components/terminal/Terminal";
+import { Intro, introCommands, introTimeline, type TerminalData } from "../components/terminal/outputs";
+import { projects } from "@/data/projects";
+import { coursework, paper } from "@/data/research";
+import { experience } from "@/data/experience";
+import { stack } from "@/data/stack";
+import type { Locale } from "@/data/locale";
+import type { Dictionary } from "../[lang]/dictionaries";
 
-import { useState, useEffect } from "react";
-import { Button } from "../components/Button";
-import { ArrowDown, Briefcase, Github, Linkedin, Mail } from "lucide-react";
+const links = {
+  email: "gabrieldevandrade49@gmail.com",
+  github: "https://github.com/gabrimoreira",
+  linkedin: "https://linkedin.com/in/gabrimoreira",
+};
 
-export default function Hero() {
-  const [displayedName, setDisplayedName] = useState("");
-  const [showBio, setShowBio] = useState(false);
-
-  useEffect(() => {
-    const seq = [
-      "G",
-      "Ga",
-      "Gab",
-      "Gabr",
-      "Gabri",
-      "Gabrie",
-      "Gabriel",
-      "Gabriel ",
-      "Gabriel .",
-    ];
-
-    let i = 0;
-
-    const type = setInterval(() => {
-      if (i < seq.length) {
-        setDisplayedName(seq[i]);
-        i++;
-      } else {
-        clearInterval(type);
-
-        setTimeout(() => {
-          setDisplayedName("Gabriel");
-          setShowBio(true);
-        }, 600);
-      }
-    }, 150);
-
-    return () => clearInterval(type);
-  }, []);
+export default function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+  const t = dict.terminal;
+  const data: TerminalData = {
+    bio: dict.hero.bio,
+    stack: stack.map(({ group, items }) => ({ group: group[lang], items })),
+    experience: experience.map(({ id, role, company }) => ({ id, title: `${role[lang]}, ${company[lang]}` })),
+    projects: projects.map(({ id, title, demoLink }) => ({ id, title: title[lang], demoLink })),
+    research: [
+      { name: `${paper.id}.pdf`, title: paper.title, link: paper.link },
+      ...coursework.map((course) => ({ name: `${course.id}/`, title: course.title[lang], link: course.link })),
+    ],
+    contact: [
+      { label: "email", text: links.email, href: `mailto:${links.email}` },
+      { label: "github", text: "github.com/gabrimoreira", href: links.github },
+      { label: "linkedin", text: "linkedin.com/in/gabrimoreira", href: links.linkedin },
+    ],
+  };
+  const { end } = introTimeline(introCommands(t.files));
 
   return (
-    <main className="flex flex-col min-h-screen items-center justify-center bg-background min-w-screen px-4 gap-8 text-center">
-      <h1 className="text-5xl md:text-8xl font-bold text-foreground tracking-tight">
-        Hi, my name is
-        <span className="text-gradient">{" " + displayedName}</span>
-        <span className="animate-pulse text-primary ml-1">|</span>
-      </h1>
+    <section aria-labelledby="hero-name" className="mx-auto max-w-[75rem] px-4 pt-10 pb-20 sm:px-8 lg:px-12 lg:pt-16 lg:pb-28">
+      <div className="grid gap-8 lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-10 lg:gap-y-8">
+        <header className="order-1 lg:col-span-5 lg:row-start-1">
+          <h1
+            id="hero-name"
+            className="-mt-[0.12em] font-sans text-[clamp(2.75rem,5.4vw,4.5rem)] leading-[0.92] font-bold tracking-[-0.02em] wdth-110"
+          >
+            <span className="block">Gabriel</span>
+            <span className="block">Moreira</span>
+            <span className="block">de Andrade</span>
+          </h1>
+          <p className="mt-5 font-sans text-xl font-medium text-quiet lg:text-2xl">{dict.hero.role}</p>
+        </header>
 
-      <p
-        className={`
-          text-lg md:text-xl text-muted max-w-2xl leading-relaxed
-          transition-all duration-1000 ease-out
-          ${showBio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
-      `}
-      >
-        I am a Computer Engineering undergraduate at the Federal University of
-        Ceará (UFC). My background includes web development at GTI Junior
-        Enterprise and research on quantum circuit simulation and data analysis.
-      </p>
+        <div className="order-3 flex flex-col gap-6 lg:col-span-5 lg:row-start-2">
+          <p className="max-w-[34rem] text-[17px] leading-[1.65]">{dict.hero.bio}</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-medium">
+            <li>
+              <a className="link inline-flex items-center gap-2" href={links.github} target="_blank" rel="noopener noreferrer">
+                <Github aria-hidden className="size-4" />
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a className="link inline-flex items-center gap-2" href={links.linkedin} target="_blank" rel="noopener noreferrer">
+                <Linkedin aria-hidden className="size-4" />
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a className="link inline-flex items-center gap-2" href={`mailto:${links.email}`}>
+                <Mail aria-hidden className="size-4" />
+                {dict.hero.email}
+              </a>
+            </li>
+          </ul>
+        </div>
 
-      <div
-        className={`
-          flex flex-col sm:flex-row gap-4 pt-4
-          transition-all duration-1000 ease-out delay-300 
-          ${showBio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
-        `}
-      >
-        <a href="#projects">
-          <Button variant="primary">
-            View Projects
-            <ArrowDown className="w-4 h-4" />
-          </Button>
-        </a>
-
-        <a href="#research">
-          <Button variant="outline">
-            Read Research
-            <Briefcase className="w-4 h-4" />
-          </Button>
-        </a>
+        <div className="order-2 h-[460px] sm:h-[420px] lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1 lg:h-[440px]">
+          <Terminal
+            intro={<Intro data={data} files={t.files} />}
+            promptDelay={end}
+            ctx={{ data, t, otherLanguage: { href: dict.nav.otherLanguage.href, code: dict.nav.otherLanguage.lang } }}
+          />
+        </div>
       </div>
-
-      <div
-        className={`
-          flex gap-6 mt-4
-          transition-all duration-1000 ease-out delay-500 
-          ${showBio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
-        `}
-      >
-        <a
-          href="https://github.com/gabrimoreira"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
-        >
-          <Github className="w-6 h-6" />
-        </a>
-
-        <a
-          href="https://linkedin.com/in/gabrimoreira"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
-        >
-          <Linkedin className="w-6 h-6" />
-        </a>
-
-        <a
-          href="mailto:gabrieldevandrade49@gmail.com"
-          className="text-muted hover:text-primary transition-colors hover:scale-110 transform duration-200"
-        >
-          <Mail className="w-6 h-6" />
-        </a>
-      </div>
-    </main>
+    </section>
   );
 }
